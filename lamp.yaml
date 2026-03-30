@@ -1,0 +1,39 @@
+---
+- name: Instalar LAMP
+  hosts: centos
+  become: yes
+
+  tasks:
+    - name: Actualizar Repos
+      yum:
+        update_cache: yes
+
+    - name: Instalar el servidor web Apache
+      yum:
+        name: httpd
+        state: present
+
+    - name: Instalar el sistema gestor de bases de datos MariaDB
+      yum:
+        name: mariadb-server
+        state: present
+
+    - name: Instalar PHP y los módulos necesarios
+      yum:
+        name:
+          - php
+          - php-mysqlnd
+          - php-cli
+          - php-common
+        state: present
+
+    - name: Reiniciar el servidor web Apache
+      service:
+        name: httpd
+        state: started
+
+    - name: Copiar el archivo phpinfo.php
+      copy:
+        src: phpinfo.php
+        dest: /var/www/html/
+        mode: 0755

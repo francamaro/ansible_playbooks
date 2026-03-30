@@ -1,0 +1,32 @@
+---
+- name: Trabajar con lineinfile
+  hosts: redhat2
+
+  tasks:
+  - name: Copiar un fichero sencillo de ejemplo
+    copy:
+      src: recursos/ejemplo.txt
+      dest: /tmp/ejemplo.txt
+
+  - name: Añadir una linea al fichero
+    ansible.builtin.lineinfile:
+      path: /tmp/ejemplo.txt
+      line: Linea 4
+
+  - name: Cambiar la linea 1
+    ansible.builtin.lineinfile:
+      path: /tmp/ejemplo.txt
+      search_string: Linea 1
+      line: He cambiado la linea 1
+
+  - name: Borrar Linea 2
+    ansible.builtin.lineinfile:
+      path: /tmp/ejemplo.txt
+      search_string: Linea 2
+      state: absent
+
+  - name: Reemplazar la Linea 4
+    ansible.builtin.lineinfile:
+      path: /tmp/ejemplo.txt
+      regexp: '^Linea 4'
+      line: Cambiado por REGEX

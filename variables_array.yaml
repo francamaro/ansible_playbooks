@@ -1,0 +1,17 @@
+---
+- name: Prueba con variables
+  hosts: centos
+  vars:
+      mensaje: "Esto es otro mensaje de Ansible"
+      curso: "dentro del curso de Ansible"
+      entornos:
+       - desarrollo
+       - testing
+       - produccion
+      responsables: ["pepe","juan","Rosa"]
+
+
+  tasks:
+  - name: ver variables
+    debug: 
+      msg: "Entornos disponibles {{entornos}} {{responsables}}"

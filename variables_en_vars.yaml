@@ -1,0 +1,22 @@
+---
+- name: Prueba con variables
+  hosts: centos
+  vars:
+      v1: "Variable Global"
+
+  tasks:
+  - name: Variable Local
+    vars: 
+      v1: "prueba"
+    debug:
+      msg: "Este valor es local {{v1}}"
+  - name: Variable Local 2
+    vars: 
+      v1: "adios"
+    debug:
+      msg: "Este valor es local {{v1}}"
+  - name: Variable Local 23
+    debug:
+      msg: "Este valor es local {{v1}}"
+      
+      

@@ -1,0 +1,14 @@
+---
+- name: Prueba con variables del fichero de inventario
+  hosts: centos
+
+  tasks:
+  - name: Variable Local
+    vars:
+      v1: "prueba"
+    debug: 
+      msg: "Este valor es local {{v1}}"
+
+  - name:  Variable que viene del inventario
+    debug:
+      msg: "Este valor es local {{v2}}"

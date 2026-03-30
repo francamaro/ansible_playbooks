@@ -1,0 +1,21 @@
+---
+- name: trabajar con usuarios
+  hosts: centos
+  become: true
+ 
+  tasks:
+  - name: Crear un usuario simple
+    user:
+      name: alena
+
+  - name: Crear un grupo
+    group:
+      name: woods
+      state: present
+
+  - name: Crear un usuario del grupo woods
+    user:
+      name: krystel
+      group: woods
+      shell: /bin/bash
+      home: /home/krystel

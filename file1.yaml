@@ -1,0 +1,29 @@
+---
+- name: Trabajar con ficheros
+  hosts: centos
+  vars:
+      fichero: /tmp/prueba1.txt
+      directorio: /tmp/dir1
+
+  tasks:
+  - name: Crear un fichero vacio
+    file:
+      path: "{{fichero}}"
+      state: "touch"
+
+  - name: Cambiar permisos
+    file:
+      path: "{{fichero}}"
+      mode: "0750"
+
+  - name: Crear directorio
+    file:
+      path: "{{directorio}}"
+      state: directory
+      mode: '0755'
+  - name: Crear fichero
+    file:
+      path: "{{directorio}}/francisco.txt"
+      state: 'touch'
+
+  

@@ -1,0 +1,21 @@
+---
+- name: Probar con set_fact
+  hosts: centos
+
+  tasks:
+  - name: Crear una variable
+    set_fact:
+      fichero: desarrollo.txt
+
+  - name: Crear el fichero en la maquina
+    ansible.builtin.file:
+      path: /tmp/{{fichero}}
+      state: touch
+
+  - name: Crear una variable con una expression
+    ansible.builtin.set_fact:
+      nombre: "{{ansible_facts['hostname'] | upper}}"
+
+  - name: Visualizar el nombre de la maquina
+    ansible.builtin.debug:
+      msg: El nombre en mayuscula es {{nombre}}

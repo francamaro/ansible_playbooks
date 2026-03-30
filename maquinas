@@ -1,0 +1,8 @@
+[redhat1]
+9.60.229.201
+
+[redhat2]
+9.60.204.242
+
+[centos]
+9.60.235.213 v2="Esto es una variable de inventario"

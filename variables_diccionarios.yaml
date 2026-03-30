@@ -1,0 +1,15 @@
+---
+- name: Prueba con variables
+  hosts: centos
+  vars:
+      mensaje: "Esto es otro mensaje de Ansible"
+      curso: "dentro del curso de Ansible"
+      desarrollo:
+       tipo: linux
+       memoria: 4GB
+       disco: 500GB
+
+  tasks:
+  - name: ver variables
+    debug: 
+      msg: "Los ordenadores de desarrollo: {{desarrollo}} y su memoria es {{desarrollo.memoria}}"

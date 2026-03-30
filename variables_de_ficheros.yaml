@@ -1,0 +1,14 @@
+---
+- name: Prueba con variables del fichero externos
+  hosts: centos
+  vars_files:
+     - recursos/fichero1.yaml
+     - recursos/fichero2.yaml
+  tasks:
+  - name: Variable primer fichero
+    debug:
+      msg: "Este valor es del primero fichero --> {{f1}}"
+
+  - name: Variable segundo  fichero
+    debug:
+      msg: "Este valor es del segundo  fichero --> {{f2}}"
