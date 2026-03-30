@@ -1,15 +1,15 @@
 ---
 - name: Prueba con WHEN. Visualizar la fecha en los redhat
-  hosts: centos
+  hosts: redhat2
 
   tasks:
   - name: Capturar fecha
     shell:
      cmd: date
     register: fecha
-    when: ansible_distribution=='Redhat'
+    when: ansible_distribution=='RedHat'
 
   - name: Visualizar fecha
     ansible.builtin.debug: 
-      msg: "{{fecha.stoudt}}"
-    when: ansible_distribution=='Redhat'
+      msg: "{{fecha.stdout}}"
+    when: ansible_distribution=='RedHat'
