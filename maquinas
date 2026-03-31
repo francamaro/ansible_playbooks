@@ -6,3 +6,6 @@
 
 [centos]
 9.60.235.213 v2="Esto es una variable de inventario"
+
+[ubuntu]
+9.60.226.4

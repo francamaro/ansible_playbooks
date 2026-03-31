@@ -1,0 +1,21 @@
+---
+- name: Prueba con WHEN. Actualizar PHP si es menor a 8.1
+  hosts: ubuntu
+  become: yes
+
+  tasks:
+
+  - name: Comprobar version de PHP
+    ansible.builtin.shell:
+      cmd: php -v | php --version | head -n 1 | cut -c 5-10
+    register: resultado
+
+  - name: Visualizar resultado solo como ejemplo
+    ansible.builtin.debug:
+      msg: "{{resultado.stdout}}"
+    when: resultado.stdout != "8.1.34"
+
+  - name: Actualizar PHP
+    ansible.builtin.apt:
+      name: php8.1
+    when: resultado.stdout != "8.1.34"
