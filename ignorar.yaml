@@ -1,0 +1,15 @@
+---
+- name: Prueba con WHEN. Ignorar errores
+  hosts: centos
+  become: yes
+
+  tasks:
+  - name: Acceder a un directorio incorrecto
+    ansible.builtin.command:
+      cmd: ls /temporal
+    register: resultado
+    ignore_errors: true
+
+  - name: Visualizar Resultado
+    ansible.builtin.debug:
+      msg: "{{resultado}}"
