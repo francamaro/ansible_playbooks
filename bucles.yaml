@@ -1,0 +1,21 @@
+---
+- name: Trabajar con bucles
+  hosts: centos
+
+  tasks:
+  - name: Visualizar contenido con loop
+    ansible.builtin.debug:
+      msg: "{{item}}"
+    loop: 
+       - valor1
+       - valor2
+       - valor3
+
+  - name: Visualizar contenido con with_items
+    ansible.builtin.debug:
+      msg: "{{item}}"
+    with_items: 
+       - valor4
+       - valor5
+       - valor6
+

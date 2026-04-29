@@ -1,0 +1,14 @@
+---
+- name: Trabajar con bucles
+  hosts: redhat2
+  become: true
+
+  tasks:
+  - name: Crear varios groups en el sistema operativo
+    ansible.builtin.group:
+      name: "{{item}}"
+      state: present
+    loop: 
+       - group1
+       - group2
+       - group3
